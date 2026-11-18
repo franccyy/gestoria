@@ -1,0 +1,32 @@
+{
+  "name": "gestoria",
+  "version": "0.1.0",
+  "private": true,
+  "description": "GestorIA — assistente inteligente de gestão de lojas (MVP com dados fictícios)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test src/lib/periods.test.ts src/services/store/storeQueries.test.ts src/services/store/productSearch.test.ts src/services/assistant/rules/parsers.test.ts src/services/assistant/rules/ruleEngine.test.ts src/services/dashboard/indicators.test.ts",
+    "data:generate": "tsx scripts/generate-sales.ts",
+    "data:summary": "tsx scripts/print-summary.ts"
+  },
+  "dependencies": {
+    "next": "^15.5.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  }
+}

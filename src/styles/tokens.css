@@ -1,0 +1,98 @@
+/*
+ * ============================================================
+ *  GestorIA — Design tokens (FONTE ÚNICA DA IDENTIDADE VISUAL)
+ * ============================================================
+ *  Todas as cores, fontes, tamanhos, espaçamentos, bordas,
+ *  arredondamentos e sombras da aplicação vivem aqui.
+ *
+ *  Para mudar a cor principal em todas as telas, altere apenas
+ *  --gi-color-primary (e, se quiser, --gi-color-primary-hover).
+ *
+ *  Os componentes NUNCA usam valores hexadecimais diretamente:
+ *  eles usam classes do Tailwind (ex.: bg-primary, text-muted,
+ *  rounded-card), que são ligadas a estes tokens em globals.css.
+ *
+ *  Prefixo "--gi-" = GestorIA (evita conflito com nomes do Tailwind).
+ * ============================================================
+ */
+
+:root {
+  /* ---------- Cores da marca ---------- */
+  --gi-color-primary: #1b4d3e;          /* verde-escuro principal */
+  --gi-color-primary-hover: #143c30;
+  --gi-color-on-primary: #ffffff;       /* texto sobre o verde-escuro */
+
+  --gi-color-accent: #dcef7a;           /* amarelo-limão (botões de destaque, selos) */
+  --gi-color-accent-hover: #cfe565;
+  --gi-color-on-accent: #14231c;
+
+  --gi-color-highlight: #e8f1dc;        /* verde-claro (faixas, item ativo da navegação) */
+  --gi-color-highlight-strong: #a8c37e; /* verde médio (barras secundárias) */
+
+  /* ---------- Fundos ---------- */
+  --gi-color-canvas: #efeee7;           /* fundo externo, atrás do "aparelho" */
+  --gi-color-background: #fafaf5;       /* fundo creme das telas */
+  --gi-color-surface: #ffffff;          /* cards brancos */
+  --gi-color-surface-muted: #f0f3e9;    /* cards suaves (ex.: representatividade) */
+
+  /* ---------- Textos ---------- */
+  --gi-color-foreground: #14231c;       /* títulos e texto forte */
+  --gi-color-muted: #4b5d54;            /* texto cinza-esverdeado */
+  --gi-color-subtle: #626f68;           /* placeholders, legendas (contraste ≥ 4,5:1 em todos os fundos) */
+
+  /* ---------- Bordas ---------- */
+  --gi-color-border: #e2e5db;
+  --gi-color-border-strong: #d3d9cc;
+  --gi-color-input-border: #859489;     /* contorno de campos de texto (contraste ≥ 3:1, exigido para campos) */
+
+  /* ---------- Estados ---------- */
+  --gi-color-success: #2b7148;          /* indicadores positivos */
+  --gi-color-success-soft: #e3f1e6;
+  --gi-color-danger: #b0402f;           /* alertas e erros */
+  --gi-color-danger-soft: #f8e4df;
+  --gi-color-warning: #8a5c0c;          /* avisos (ex.: estoque baixo) */
+  --gi-color-warning-soft: #f8eed8;
+
+  /* ---------- Tons de apoio (cards da Auditoria) ---------- */
+  --gi-color-tint-green: #e8f1dc;
+  --gi-color-tint-peach: #f8ebdd;
+  --gi-color-tint-blue: #e8edf3;
+  --gi-color-tint-lilac: #f1e8ef;
+
+  /* ---------- Tipografia ----------
+   * As variáveis --font-dm-sans e --font-fraunces são criadas
+   * pelo next/font em src/lib/fonts.ts.
+   */
+  --gi-font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --gi-font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  --gi-text-caption: 0.8125rem;   /* 13px — legendas, avisos */
+  --gi-text-body: 1rem;           /* 16px — texto padrão */
+  --gi-text-lead: 1.0625rem;      /* 17px — descrições */
+  --gi-text-title: 1.75rem;       /* 28px — título de tela */
+  --gi-text-display: 2rem;        /* 32px — título de destaque */
+  --gi-text-metric: clamp(1.25rem, 5.5vw, 1.75rem); /* 20–28px — números dos indicadores (diminui em telas estreitas) */
+  --gi-tracking-eyebrow: 0.22em;  /* espaçamento do "PAINEL INICIAL" */
+
+  /* ---------- Espaçamentos ---------- */
+  --gi-space-page: 1.5rem;        /* margem lateral das telas */
+  --gi-space-section: 2rem;       /* distância entre blocos */
+  --gi-space-card: 1.5rem;        /* espaço interno dos cards */
+
+  /* ---------- Dimensões do layout ---------- */
+  --gi-app-max-width: 32rem;      /* largura máxima do "aparelho" */
+  --gi-nav-height: 5.5rem;        /* altura da navegação inferior */
+
+  /* ---------- Bordas e arredondamentos ---------- */
+  --gi-border-width: 1px;
+  --gi-border-width-strong: 3px;  /* contorno dos cards de destaque e chips */
+  --gi-radius-sm: 0.75rem;        /* 12px — campos, faixas */
+  --gi-radius-card: 1.125rem;     /* 18px — cards */
+  --gi-radius-lg: 1.75rem;        /* 28px — card principal, moldura do app */
+  --gi-radius-pill: 9999px;       /* chips e botões arredondados */
+
+  /* ---------- Sombras ---------- */
+  --gi-shadow-card: 0 1px 2px rgb(20 35 28 / 0.04);
+  --gi-shadow-raised: 0 8px 24px rgb(20 35 28 / 0.08);
+  --gi-shadow-app: 0 24px 60px rgb(20 35 28 / 0.08);
+}

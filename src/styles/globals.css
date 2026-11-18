@@ -1,0 +1,172 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+/*
+ * Ligação entre os tokens (tokens.css) e o Tailwind.
+ * Cada linha abaixo cria classes utilitárias. Exemplos:
+ *   --color-primary   →  bg-primary, text-primary, border-primary
+ *   --radius-card     →  rounded-card
+ *   --shadow-raised   →  shadow-raised
+ *   --font-serif      →  font-serif
+ *
+ * "inline" faz as classes apontarem para a variável CSS,
+ * então mudar o token em tokens.css muda todas as telas.
+ */
+@theme inline {
+  /* Cores */
+  --color-primary: var(--gi-color-primary);
+  --color-primary-hover: var(--gi-color-primary-hover);
+  --color-on-primary: var(--gi-color-on-primary);
+  --color-accent: var(--gi-color-accent);
+  --color-accent-hover: var(--gi-color-accent-hover);
+  --color-on-accent: var(--gi-color-on-accent);
+  --color-highlight: var(--gi-color-highlight);
+  --color-highlight-strong: var(--gi-color-highlight-strong);
+
+  --color-canvas: var(--gi-color-canvas);
+  --color-background: var(--gi-color-background);
+  --color-surface: var(--gi-color-surface);
+  --color-surface-muted: var(--gi-color-surface-muted);
+
+  --color-foreground: var(--gi-color-foreground);
+  --color-muted: var(--gi-color-muted);
+  --color-subtle: var(--gi-color-subtle);
+
+  --color-border: var(--gi-color-border);
+  --color-border-strong: var(--gi-color-border-strong);
+  --color-input-border: var(--gi-color-input-border);
+
+  --color-success: var(--gi-color-success);
+  --color-success-soft: var(--gi-color-success-soft);
+  --color-danger: var(--gi-color-danger);
+  --color-danger-soft: var(--gi-color-danger-soft);
+  --color-warning: var(--gi-color-warning);
+  --color-warning-soft: var(--gi-color-warning-soft);
+
+  --color-tint-green: var(--gi-color-tint-green);
+  --color-tint-peach: var(--gi-color-tint-peach);
+  --color-tint-blue: var(--gi-color-tint-blue);
+  --color-tint-lilac: var(--gi-color-tint-lilac);
+
+  /* Tipografia */
+  --font-sans: var(--gi-font-sans);
+  --font-serif: var(--gi-font-serif);
+
+  --text-caption: var(--gi-text-caption);
+  --text-caption--line-height: 1.5;
+  --text-body: var(--gi-text-body);
+  --text-body--line-height: 1.5;
+  --text-lead: var(--gi-text-lead);
+  --text-lead--line-height: 1.45;
+  --text-title: var(--gi-text-title);
+  --text-title--line-height: 1.2;
+  --text-display: var(--gi-text-display);
+  --text-display--line-height: 1.15;
+  --text-metric: var(--gi-text-metric);
+  --text-metric--line-height: 1.1;
+
+  --tracking-eyebrow: var(--gi-tracking-eyebrow);
+
+  /* Espaçamentos nomeados → p-page, px-page, gap-section, p-card... */
+  --spacing-page: var(--gi-space-page);
+  --spacing-section: var(--gi-space-section);
+  --spacing-card: var(--gi-space-card);
+  --spacing-nav: var(--gi-nav-height);
+
+  /* Larguras → max-w-app */
+  --container-app: var(--gi-app-max-width);
+
+  /* Arredondamentos */
+  --radius-sm: var(--gi-radius-sm);
+  --radius-card: var(--gi-radius-card);
+  --radius-lg: var(--gi-radius-lg);
+  --radius-pill: var(--gi-radius-pill);
+
+  /* Sombras */
+  --shadow-card: var(--gi-shadow-card);
+  --shadow-raised: var(--gi-shadow-raised);
+  --shadow-app: var(--gi-shadow-app);
+}
+
+/*
+ * Utilitários próprios do GestorIA (usam os tokens, nada fixo):
+ *   border-thick     → contorno grosso dos chips, cards de destaque e campos
+ *   border-b-thick   → linha grossa sob o cabeçalho
+ *   border-t-thick   → linha grossa sobre a navegação inferior
+ *   underline-thick  → sublinhado grosso dos botões de texto ("Limpar histórico")
+ *   pb-nav-safe      → espaço no fim da tela para a navegação fixa não cobrir o conteúdo
+ *   pb-safe          → respeita a área da barra de gestos do iPhone/Android
+ */
+@utility border-thick {
+  border-style: solid;
+  border-width: var(--gi-border-width-strong);
+}
+
+@utility border-b-thick {
+  border-bottom-style: solid;
+  border-bottom-width: var(--gi-border-width-strong);
+}
+
+@utility border-t-thick {
+  border-top-style: solid;
+  border-top-width: var(--gi-border-width-strong);
+}
+
+@utility underline-thick {
+  text-decoration-line: underline;
+  text-decoration-thickness: var(--gi-border-width-strong);
+  text-decoration-color: var(--gi-color-primary);
+  text-underline-offset: 0.45em;
+}
+
+@utility pb-nav-safe {
+  padding-bottom: calc(var(--gi-nav-height) + 2rem + env(safe-area-inset-bottom));
+}
+
+@utility pb-safe {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+}
+
+/* Quem pediu ao sistema para reduzir movimento não vê animações nem transições. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Estilos base da aplicação */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--gi-color-canvas);
+    color: var(--gi-color-foreground);
+    font-family: var(--gi-font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--gi-font-serif);
+    color: var(--gi-color-foreground);
+  }
+
+  /* O campo de pesquisa tem botão próprio de limpar; esconde o "x" nativo do navegador */
+  input[type="search"]::-webkit-search-cancel-button {
+    appearance: none;
+  }
+
+  /* Foco visível e acessível em todos os elementos interativos */
+  :focus-visible {
+    outline: 2px solid var(--gi-color-primary);
+    outline-offset: 2px;
+  }
+}
